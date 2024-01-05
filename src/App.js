@@ -1,23 +1,28 @@
-import a from './react-router/pathMatch';
+import { BrowserRouter, Route } from './react-router-dom';
 
-a();
+function PageA() {
+    return <h1>pageA</h1>;
+}
+function PageB() {
+    return <h1>PageB</h1>;
+}
+function Change(props) {
+    console.log(props);
+    return (
+        <>
+            <button>pageA</button>
+            <button>pageB</button>
+        </>
+    );
+}
 
 function App() {
     return (
-        <div className="App">
-            <header className="App-header">
-                <p>
-                    Edit <code> src / App.js </code> and save to reload.{' '}
-                </p>{' '}
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    Learn React{' '}
-                </a>{' '}
-            </header>{' '}
-        </div>
+        <BrowserRouter>
+            <Route path="/a" component={PageA} />
+            <Route path="/b" component={PageB} />
+            <Route path="/" component={Change} />
+        </BrowserRouter>
     );
 }
 
