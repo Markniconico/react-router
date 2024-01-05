@@ -3,15 +3,16 @@ import { BrowserRouter, Route } from './react-router-dom';
 function PageA() {
     return <h1>pageA</h1>;
 }
-function PageB() {
+function PageB(props) {
+    console.log(props);
     return <h1>PageB</h1>;
 }
 function Change(props) {
-    console.log(props);
+    const { history, location } = props;
     return (
         <>
-            <button>pageA</button>
-            <button>pageB</button>
+            <button onClick={() => history.push('/a')}>pageA</button>
+            <button onClick={() => history.push('/b')}>pageB</button>
         </>
     );
 }
@@ -19,9 +20,9 @@ function Change(props) {
 function App() {
     return (
         <BrowserRouter>
-            <Route path="/a" component={PageA} />
+            <Route path="/a" component={PageA}></Route>
             <Route path="/b" component={PageB} />
-            <Route path="/" component={Change} />
+            <Route component={Change} />
         </BrowserRouter>
     );
 }

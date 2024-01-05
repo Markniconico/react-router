@@ -10,10 +10,9 @@ export default class Router extends Component {
 
     state = {};
 
-    contextValue = {};
-
     componentDidMount() {
-        this.unListen = this.contextValue.history.listen((location, action) => {
+        this.unListen = this.props.history.listen((location, action) => {
+            // this.props.history.action = action;
             this.setState({});
         });
     }
@@ -24,9 +23,12 @@ export default class Router extends Component {
 
     render() {
         console.log('root router render');
-        this.contextValue.history = this.props.history;
-        this.contextValue.location = this.props.history.location;
-        this.contextValue.match = pathMatch('/', this.props.history.location.pathname);
-        return <context.Provider value={this.contextValue}>{this.props.children}</context.Provider>;
+        const ctxValue = {
+            history: this.props.history,
+            location: this.props.history.location,
+            match: pathMatch('/', this.props.history.location.pathname),
+        };
+
+        return <context.Provider value={ctxValue}>{this.props.children}</context.Provider>;
     }
 }
