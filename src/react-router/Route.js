@@ -15,6 +15,7 @@ export default class Route extends Component {
     sensitive
     */
 
+    //源码不是在这里设置默认值的，是在function matchRoute中设置this.props.path || '/'；
     static defaultProps = {
         path: '/',
     };
