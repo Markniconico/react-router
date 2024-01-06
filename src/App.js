@@ -1,4 +1,4 @@
-import { BrowserRouter, Route } from './react-router-dom';
+import { BrowserRouter, Route, Link, NavLink } from './react-router-dom';
 import SwitchTest from './pages/switch';
 import TestWithRouter from './pages/withRouter';
 
@@ -21,6 +21,10 @@ function Change(props) {
             <button onClick={() => history.push('/c')}>pageC</button>
             <button onClick={() => history.push('/switch')}>to switch</button>
             <button onClick={() => history.push('/withRouter')}>to withRouter</button>
+            <Link to="/c">测试Link</Link>
+            <NavLink className="navActive" to="/c">
+                测试NavLink
+            </NavLink>
         </>
     );
 }
