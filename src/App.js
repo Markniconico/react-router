@@ -1,6 +1,6 @@
 import { BrowserRouter, Route } from './react-router-dom';
-
 import SwitchTest from './pages/switch';
+import TestWithRouter from './pages/withRouter';
 
 function PageA() {
     return <h1>PageA</h1>;
@@ -20,6 +20,7 @@ function Change(props) {
             <button onClick={() => history.push('/b')}>pageB</button>
             <button onClick={() => history.push('/c')}>pageC</button>
             <button onClick={() => history.push('/switch')}>to switch</button>
+            <button onClick={() => history.push('/withRouter')}>to withRouter</button>
         </>
     );
 }
@@ -34,6 +35,7 @@ function App() {
                 <h1>无论是否匹配都会显示</h1>
             </Route>
             <Route path="/switch" component={SwitchTest} />
+            <Route path="/withRouter" component={TestWithRouter} />
             <Route path="/" component={Change} />
         </BrowserRouter>
     );
